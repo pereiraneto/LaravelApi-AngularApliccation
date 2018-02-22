@@ -1,0 +1,56 @@
+<div class="container">
+    
+        <h2>Salvar na Agenda</h2>
+    
+        <form (ngSubmit)="onSubmit()" #pessoaForm="ngForm" novalidate>
+    
+            <div [ngClass]="getFormGroupClass(nome.valid, nome.pristine)">
+                <label for="nome" class="form-control-label">Nome</label>
+                <input type="text" [ngClass]="getFormControlClass(nome.valid, nome.pristine)" placeholder="Digite seu nome" 
+                    name="nome"
+                    #nome="ngModel"
+                    [(ngModel)]="pessoa.nome" required>
+                <div class="form-control-feedback" [hidden]="nome.valid || nome.pristine">Campo Obrigatório</div>    
+            </div>
+
+            <div [ngClass]="getFormGroupClass(nome.valid, nome.pristine)">
+                <label for="cpf" class="form-control-label">CPF</label>
+                <input type="text" [ngClass]="getFormControlClass(nome.valid, nome.pristine)" placeholder="Digite seu cpf" 
+                    name="cpf"
+                    #cpf="ngModel"
+                    [(ngModel)]="pessoa.cpf" required>
+                <div class="form-control-feedback" [hidden]="cpf.valid || cpf.pristine">Campo Obrigatório</div>    
+            </div>
+
+            <div [ngClass]="getFormGroupClass(dataNascimento.valid, dataNascimento.pristine)">
+                <label for="dataNascimento" class="form-control-label">Data de Nascimento</label>
+                <input type="text" [ngClass]="getFormControlClass(dataNascimento.valid, dataNascimento.pristine)" placeholder="Digite a data em que nasceu" 
+                    name="dataNascimento"
+                    #dataNascimento="ngModel"
+                    [(ngModel)]="pessoa.dataNascimento" required>
+                <div class="form-control-feedback" [hidden]="dataNascimento.valid || dataNascimento.pristine">Campo Obrigatório</div>    
+            </div>
+    
+            <div [ngClass]="getFormGroupClass(email.valid, email.pristine)">
+                <label for="email">Email</label>
+                <input type="email" [ngClass]="getFormControlClass(email.valid, email.pristine)" placeholder="Digite seu email" 
+                name="email"
+                #email = "ngModel"
+                [(ngModel)]="pessoa.email" required>
+                <div class="form-control-feedback" [hidden]="email.valid || email.pristine">Campo Obrigatório</div>
+            </div>
+    
+            <div [ngClass]="getFormGroupClass(telefones.valid, telefones.pristine)">
+                <label for="telefones">Telefones</label>
+                <input type="text" [ngClass]="getFormControlClass(telefones.valid, telefones.pristine)" placeholder="Digite quantos telefones tem"
+                name="telefones"
+                #telefones = "ngModel"
+                [(ngModel)]="pessoa.telefones" required>
+                <div class="form-control-feedback" [hidden]="telefones.valid || telefones.pristine">Campo Obrigatório</div>            
+            </div>
+    
+            <button type="submit" class="btn btn-success" [disabled]="!pessoaForm.form.valid">Salvar</button>
+            <a class="btn btn-secondary" (click)="goBack()">Voltar</a>
+        </form>
+    
+    </div>
